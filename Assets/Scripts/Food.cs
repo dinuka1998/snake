@@ -9,6 +9,7 @@ public class Food : MonoBehaviour
     private BoxCollider2D gridArea;
     private string SNAKE_TAG = "Snake";
 
+
     private void Start() {
         
         RandomFoodPosition();

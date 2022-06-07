@@ -13,6 +13,8 @@ public class Snake : MonoBehaviour
     [SerializeField]
     private GameObject snaketail;
     private string FOOD_TAG = "Food";
+    private string OBSTACLE_TAG = "Obstacle";
+    
 
     private void Start() {
     
@@ -90,7 +92,17 @@ public class Snake : MonoBehaviour
             Grow();
 
         }
+        else if (collider.tag == OBSTACLE_TAG) {
+            GameOver();
+        }
         
+    }
+
+    private void GameOver() {
+
+            //game over
+            print("Game over");
+
     }
 
 }
