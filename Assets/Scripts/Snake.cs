@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Snake : MonoBehaviour
 {
@@ -15,12 +16,19 @@ public class Snake : MonoBehaviour
     private string FOOD_TAG = "Food";
     private string OBSTACLE_TAG = "Obstacle";
     private bool isGameOver = false;
+    [SerializeField]
+    private Text gameOverScore;
+    [SerializeField]
+    private GameObject gameOverUI;
+
+    
 
     private Food food;
 
     private void Awake() {
         
-        food = GetComponent<Food>();
+        food = FindObjectOfType<Food>();
+        gameOverUI.SetActive(false);
 
     }
     
@@ -116,9 +124,8 @@ public class Snake : MonoBehaviour
     private void GameOver() {
 
             isGameOver = true;
-
-            //game over
-            print("Game over");
+            gameOverUI.SetActive(true);
+            gameOverScore.text = ("Score : " + food.GetScore().ToString());
 
     }
 
