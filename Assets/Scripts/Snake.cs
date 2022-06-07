@@ -14,6 +14,15 @@ public class Snake : MonoBehaviour
     private GameObject snaketail;
     private string FOOD_TAG = "Food";
     private string OBSTACLE_TAG = "Obstacle";
+    private bool isGameOver = false;
+
+    private Food food;
+
+    private void Awake() {
+        
+        food = GetComponent<Food>();
+
+    }
     
 
     private void Start() {
@@ -53,11 +62,17 @@ public class Snake : MonoBehaviour
             segments[i].position = segments[i - 1].position;
         }
         
-        this.transform.position = new Vector3(
+        if(!isGameOver){
+
+            this.transform.position = new Vector3(
             Mathf.Round(this.transform.position.x) + direction.x,
             Mathf.Round(this.transform.position.y) + direction.y,
             0.0f
+
         );
+
+        }
+        
         
 
     }
@@ -99,6 +114,8 @@ public class Snake : MonoBehaviour
     }
 
     private void GameOver() {
+
+            isGameOver = true;
 
             //game over
             print("Game over");

@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Food : MonoBehaviour
 {
 
     [SerializeField]
     private BoxCollider2D gridArea;
+
+    [SerializeField]
+    private Text scoreCout;
     private string SNAKE_TAG = "Snake";
+
+    private int score = 0;
 
 
     private void Start() {
@@ -31,10 +37,25 @@ public class Food : MonoBehaviour
 
         if((collider.tag == SNAKE_TAG)) {
 
+            
             RandomFoodPosition();
+            CalculateScore();
 
         }
         
+    }
+
+    private void CalculateScore() {
+
+        score++;
+        scoreCout.text = score.ToString();
+
+    }
+
+    public int GetScore() {
+
+        return score;
+
     }
     
 }
